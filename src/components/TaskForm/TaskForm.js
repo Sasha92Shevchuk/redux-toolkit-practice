@@ -3,7 +3,8 @@ import css from './TaskForm.module.css';
 // Імпортуємо хук
 import { useDispatch } from 'react-redux';
 // Імпортуємо генератор екшену
-import { addTask } from '../../redux/actions';
+// import { addTask } from '../../redux/actions'; - вже немає такого файлу, нижче
+import { addTask } from 'redux/tasksSlice';
 
 export const TaskForm = () => {
   const dispatch = useDispatch();

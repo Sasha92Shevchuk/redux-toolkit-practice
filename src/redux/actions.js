@@ -1,33 +1,53 @@
-import { nanoid } from 'nanoid';
+// !!!!  цей файл вже не потрібний бо createSlice сам створює екшени
 
-export const addTask = text => {
+// import { nanoid } from 'nanoid';// - не потрібно з createAction
+import { createAction, nanoid } from '@reduxjs/toolkit';
+
+// export const addTask = text => {
+//   return {
+//     type: 'tasks/addTask',
+//     payload: {
+//       id: nanoid(),
+//       completed: false,
+//       text,
+//     },
+//   };
+// };
+// тепре буде скорочений запис,
+// export const addTask = createAction('tasks/addTask'); - щоб передати в payload  обєкт , передаємо функцію 2 аргументом
+export const addTask = createAction('tasks/addTask', text => {
   return {
-    type: 'tasks/addTask',
     payload: {
+      text,
       id: nanoid(),
       completed: false,
-      text,
     },
   };
-};
+});
 
-export const deleteTask = taskId => {
-  return {
-    type: 'tasks/deleteTask',
-    payload: taskId,
-  };
-};
+export const deleteTask = createAction('tasks/deleteTask');
 
-export const toggleCompleted = taskId => {
-  return {
-    type: 'tasks/toggleCompleted',
-    payload: taskId,
-  };
-};
+export const toggleCompleted = createAction('tasks/toggleCompleted');
 
-export const setStatusFilter = value => {
-  return {
-    type: 'filters/setStatusFilter',
-    payload: value,
-  };
-};
+export const setStatusFilter = createAction('filters/setStatusFilter');
+
+// export const deleteTask = taskId => {
+//   return {
+//     type: 'tasks/deleteTask',
+//     payload: taskId,
+//   };
+// };
+
+// export const toggleCompleted = taskId => {
+//   return {
+//     type: 'tasks/toggleCompleted',
+//     payload: taskId,
+//   };
+// };
+
+// export const setStatusFilter = value => {
+//   return {
+//     type: 'filters/setStatusFilter',
+//     payload: value,
+//   };
+// };
